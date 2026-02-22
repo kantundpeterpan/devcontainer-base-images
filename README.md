@@ -113,6 +113,7 @@ Default prebuild repository: `ghcr.io/yourusername/devpod-cache`
 - Python 3.13 with uv
 - Jupyter Lab with extensions
 - pandas, numpy, matplotlib, scikit-learn, seaborn, plotly
+- Google Cloud SDK
 - Docker CLI
 
 ### GEN-AI Chainlit Image
@@ -121,6 +122,7 @@ Default prebuild repository: `ghcr.io/yourusername/devpod-cache`
 - LangChain + LangGraph
 - transformers + sentence-transformers
 - faiss-cpu for vector search
+- Google Cloud SDK
 - Docker CLI
 
 ## Publishing New Versions
