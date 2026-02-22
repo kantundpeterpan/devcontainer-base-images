@@ -1,7 +1,7 @@
 # Fullstack DevContainer Image
-# Python + Node + AI Tools + Cloud SDK + uv package manager
+# Python 3.13 + Node + AI Tools + Cloud SDK + uv package manager
 
-FROM python:3.11-slim
+FROM python:3.13-slim
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -14,14 +14,11 @@ RUN apt-get update && apt-get install -y \
     rlwrap \
     netcat-openbsd \
     zsh \
-    build-essential \
-    libssl-dev \
-    libffi-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install uv (Python package manager)
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-ENV PATH="/root/.cargo/bin:$PATH"
+# Install uv (Python package manager) using the recommended Docker method
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+ENV UV_TOOL_BIN_DIR=/usr/local/bin
 
 # Install Node.js (LTS)
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
@@ -33,7 +30,7 @@ RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN apt-get update && apt-get install -y google-cloud-cli && rm -rf /var/lib/apt/lists/*
 
 # Install Python tools with uv
-RUN uv pip install ruff black isort pytest
+RUN uv pip install --system ruff black isort pytest
 
 # Install act (GitHub Actions runner)
 RUN curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | bash -s -- -b /usr/local/bin
@@ -63,7 +60,7 @@ RUN mkdir -p /home/vscode/.cargo/bin
 RUN ln -s /root/.cargo/bin/uv /home/vscode/.cargo/bin/uv
 
 # Install Python packages for the user with uv
-RUN uv pip install --user ruff black isort pytest
+RUN uv pip install --system ruff black isort pytest
 
 ENV PATH="/home/vscode/.local/bin:/home/vscode/.cargo/bin:$PATH"
 

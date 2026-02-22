@@ -1,7 +1,7 @@
 # Data Science DevContainer Image
-# Python with Jupyter, pandas, numpy, matplotlib, scikit-learn + uv package manager
+# Python 3.13 with Jupyter, pandas, numpy, matplotlib, scikit-learn + uv package manager
 
-FROM python:3.11-slim
+FROM python:3.13-slim
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -12,20 +12,17 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     apt-transport-https \
     zsh \
-    build-essential \
-    libssl-dev \
-    libffi-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install uv (Python package manager)
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-ENV PATH="/root/.cargo/bin:$PATH"
+# Install uv (Python package manager) using the recommended Docker method
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+ENV UV_TOOL_BIN_DIR=/usr/local/bin
 
 # Install Python data science stack with uv
-RUN uv pip install numpy pandas matplotlib scikit-learn jupyterlab seaborn plotly
+RUN uv pip install --system numpy pandas matplotlib scikit-learn jupyterlab seaborn plotly
 
 # Install Jupyter extensions
-RUN uv pip install jupyter-contrib-nbextensions jupyter-nbextensions-configurator
+RUN uv pip install --system jupyter-contrib-nbextensions jupyter-nbextensions-configurator
 
 # Set up working directory
 WORKDIR /workspace
@@ -49,7 +46,7 @@ RUN mkdir -p /home/vscode/.cargo/bin
 RUN ln -s /root/.cargo/bin/uv /home/vscode/.cargo/bin/uv
 
 # Install Python packages for the user with uv
-RUN uv pip install --user numpy pandas matplotlib scikit-learn jupyterlab
+RUN uv pip install --system numpy pandas matplotlib scikit-learn jupyterlab
 
 ENV PATH="/home/vscode/.local/bin:/home/vscode/.cargo/bin:$PATH"
 

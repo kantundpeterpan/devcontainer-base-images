@@ -4,9 +4,9 @@ This repository contains Dockerfiles for building reusable devcontainer base ima
 
 ## Available Images
 
-- **Fullstack**: Python 3.11 + Node.js LTS + Cloud SDK + AI tools + uv
-- **Data Science**: Python 3.11 + Jupyter + pandas + numpy + scikit-learn + uv
-- **GEN-AI Chainlit**: Python 3.11 + Chainlit + LangChain + LangGraph + transformers + uv
+- **Fullstack**: Python 3.13 + Node.js LTS + Cloud SDK + AI tools + uv
+- **Data Science**: Python 3.13 + Jupyter + pandas + numpy + scikit-learn + uv
+- **GEN-AI Chainlit**: Python 3.13 + Chainlit + LangChain + LangGraph + transformers + uv
 
 ## Key Features
 
@@ -102,7 +102,7 @@ Default prebuild repository: `ghcr.io/yourusername/devpod-cache`
 ## Image Contents
 
 ### Fullstack Image
-- Python 3.11 with uv package manager
+- Python 3.13 with uv package manager
 - Node.js LTS
 - Google Cloud SDK
 - Docker CLI
@@ -110,13 +110,13 @@ Default prebuild repository: `ghcr.io/yourusername/devpod-cache`
 - Common development tools
 
 ### Data Science Image
-- Python 3.11 with uv
+- Python 3.13 with uv
 - Jupyter Lab with extensions
 - pandas, numpy, matplotlib, scikit-learn, seaborn, plotly
 - Docker CLI
 
 ### GEN-AI Chainlit Image
-- Python 3.11 with uv
+- Python 3.13 with uv
 - Chainlit with VS Code extension
 - LangChain + LangGraph
 - transformers + sentence-transformers

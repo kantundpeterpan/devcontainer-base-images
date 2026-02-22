@@ -1,7 +1,7 @@
 # GEN-AI with Chainlit DevContainer Image
-# Python with Chainlit, LangChain, LangGraph, transformers, and AI tools + uv package manager
+# Python 3.13 with Chainlit, LangChain, LangGraph, transformers, and AI tools + uv package manager
 
-FROM python:3.11-slim
+FROM python:3.13-slim
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -12,17 +12,14 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     apt-transport-https \
     zsh \
-    build-essential \
-    libssl-dev \
-    libffi-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install uv (Python package manager)
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-ENV PATH="/root/.cargo/bin:$PATH"
+# Install uv (Python package manager) using the recommended Docker method
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+ENV UV_TOOL_BIN_DIR=/usr/local/bin
 
 # Install Python GEN-AI stack with uv
-RUN uv pip install chainlit langchain langgraph transformers sentence-transformers faiss-cpu
+RUN uv pip install --system chainlit langchain langgraph transformers sentence-transformers faiss-cpu
 
 # Install Chainlit CLI
 RUN uv pip install chainlit
@@ -49,7 +46,7 @@ RUN mkdir -p /home/vscode/.cargo/bin
 RUN ln -s /root/.cargo/bin/uv /home/vscode/.cargo/bin/uv
 
 # Install Python packages for the user with uv
-RUN uv pip install --user chainlit langchain langgraph transformers sentence-transformers
+RUN uv pip install --system chainlit langchain langgraph transformers sentence-transformers
 
 ENV PATH="/home/vscode/.local/bin:/home/vscode/.cargo/bin:$PATH"
 
