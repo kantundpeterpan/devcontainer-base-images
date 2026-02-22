@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y google-cloud-cli && rm -rf /var/lib/apt
 RUN uv pip install --system chainlit langchain langgraph transformers sentence-transformers faiss-cpu
 
 # Install Chainlit CLI
-RUN uv pip install chainlit
+RUN uv pip install --system chainlit
 
 # Set up working directory
 WORKDIR /workspace
