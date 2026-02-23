@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant: [fullstack, datascience, genai-chainlit, datascience-extended, data-engineering]
+        variant: [fullstack, datascience, genai-chainlit, datascience-extended, data-engineering, r-bayesian]
 
     steps:
       - name: Checkout repository
