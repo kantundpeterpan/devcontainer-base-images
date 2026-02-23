@@ -19,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        variant: [fullstack, datascience, genai-chainlit]
+        variant: [fullstack, datascience, genai-chainlit, datascience-extended]
 
     steps:
       - name: Checkout repository

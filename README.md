@@ -6,6 +6,7 @@ This repository contains Dockerfiles for building reusable devcontainer base ima
 
 - **Fullstack**: Python 3.13 + Node.js LTS + Cloud SDK + AI tools + uv
 - **Data Science**: Python 3.13 + Jupyter + pandas + numpy + scikit-learn + uv
+- **Data Science Extended**: Python 3.13 + Jupyter + pandas + numpy + scikit-learn + **Polars** + **SQLAlchemy** + **SQLite** + SOTA ML packages + uv
 - **GEN-AI Chainlit**: Python 3.13 + Chainlit + LangChain + LangGraph + transformers + uv
 
 ## Key Features
@@ -113,6 +114,19 @@ Default prebuild repository: `ghcr.io/yourusername/devpod-cache`
 - Python 3.13 with uv
 - Jupyter Lab with extensions
 - pandas, numpy, matplotlib, scikit-learn, seaborn, plotly
+- Google Cloud SDK
+- Docker CLI
+
+### Data Science Extended Image
+- Python 3.13 with uv
+- Jupyter Lab with extensions
+- pandas, numpy, matplotlib, scikit-learn, seaborn, plotly
+- **Polars** - High-performance DataFrames
+- **SQLAlchemy** - SQL toolkit and ORM
+- **SQLite** - Embedded database
+- **XGBoost, LightGBM, CatBoost** - Gradient boosting frameworks
+- **Optuna** - Hyperparameter optimization
+- **Great Expectations** - Data validation
 - Google Cloud SDK
 - Docker CLI
 
