@@ -1,8 +1,7 @@
 # R Bayesian DevContainer Image
 # Python 3.11 + R 4.3 + Bayesian statistics packages + radian console
 
-FROM mambaorg/micromamba:1.4.4-debian-slim
-
+FROM mambaorg/micromamba:ubuntu
 USER root
 
 # Install system dependencies
