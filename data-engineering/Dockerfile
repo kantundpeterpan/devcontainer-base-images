@@ -55,7 +55,7 @@ RUN uv pip install --system \
     requests \
     pydantic \
     python-dotenv \
-    rich
+    rich-cli
 
 # Install act (GitHub Actions runner)
 RUN curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | bash -s -- -b /usr/local/bin
