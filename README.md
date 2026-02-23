@@ -8,6 +8,7 @@ This repository contains Dockerfiles for building reusable devcontainer base ima
 - **Data Science**: Python 3.13 + Jupyter + pandas + numpy + scikit-learn + uv
 - **Data Science Extended**: Python 3.13 + Jupyter + pandas + numpy + scikit-learn + **Polars** + **SQLAlchemy** + **SQLite** + SOTA ML packages + uv
 - **GEN-AI Chainlit**: Python 3.13 + Chainlit + LangChain + LangGraph + transformers + uv
+- **Data Engineering**: Python 3.13 + **Apache Airflow** + **dbt** + **Spark** + **Kafka** + **Prefect** + **Dagster** + data pipelines + uv
 
 ## Key Features
 
@@ -138,6 +139,25 @@ Default prebuild repository: `ghcr.io/yourusername/devpod-cache`
 - faiss-cpu for vector search
 - Google Cloud SDK
 - Docker CLI
+
+### Data Engineering Image
+- Python 3.13 with uv
+- Apache Airflow - Workflow orchestration
+- dbt (Core + BigQuery + Snowflake + Postgres) - Data transformation
+- PySpark - Distributed data processing
+- Kafka Python clients - Stream processing
+- Polars - High-performance DataFrames
+- Prefect - Modern workflow orchestration
+- Dagster - Data orchestration
+- Great Expectations + Soda Core - Data quality
+- dlt - Data loading tool
+- Meltano - ELT platform
+- Celery - Distributed task queue
+- Redis - Caching and message broker
+- PostgreSQL/MySQL connectors
+- Google Cloud SDK
+- Docker CLI
+- Terraform and Kubernetes tools
 
 ## Publishing New Versions
 
