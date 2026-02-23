@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     apt-transport-https \
     zsh \
+    sudo \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv (Python package manager) using the recommended Docker method

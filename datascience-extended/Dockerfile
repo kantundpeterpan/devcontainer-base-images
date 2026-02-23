@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     apt-transport-https \
     zsh \
+    sudo \
     sqlite3 \
     libsqlite3-dev \
     && rm -rf /var/lib/apt/lists/*
