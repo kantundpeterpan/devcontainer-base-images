@@ -85,15 +85,15 @@ RUN uv pip install --system \
     jupyter-contrib-nbextensions \
     jupyter-nbextensions-configurator
 
-# Install Spark (optional - can be heavy, uncomment if needed)
-# ENV SPARK_VERSION=3.5.0
-# ENV HADOOP_VERSION=3
-# RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
-#     tar -xzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
-#     mv spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} /opt/spark && \
-#     rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
-# ENV SPARK_HOME=/opt/spark
-# ENV PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+# Install Spark
+ENV SPARK_VERSION=3.5.0
+ENV HADOOP_VERSION=3
+RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
+    tar -xzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
+    mv spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} /opt/spark && \
+    rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
+ENV SPARK_HOME=/opt/spark
+ENV PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 
 # Install Docker CLI (for docker-in-docker functionality)
 RUN curl -fsSL https://get.docker.com | sh
