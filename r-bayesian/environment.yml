@@ -1,0 +1,52 @@
+name: r-bayesian
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.3
+  - r-tidyverse
+  - r-data.table
+  - r-dplyr
+  - r-tidyr
+  - r-readr
+  - r-readxl
+  - r-lubridate
+  - r-stringr
+  - r-janitor
+  - r-arrow
+  - r-ggplot2
+  - r-patchwork
+  - r-plotly
+  - r-gganimate
+  - r-ggraph
+  - r-igraph
+  - r-caret
+  - r-glmnet
+  - r-broom
+  - r-recipes
+  - r-shiny
+  - r-irkernel
+  - jupyterlab
+  - radian
+  - python=3.11
+  - pip
+  # Bayesian packages
+  - r-rstan
+  - r-brms
+  - r-rstanarm
+  - r-cmdstanr
+  - cmdstan
+  - r-posterior
+  - r-bayesplot
+  - r-loo
+  - r-bridgesampling
+  - r-bayestestR
+  - r-tidybayes
+  - r-coda
+  - r-nimble
+  - r-coda
+  - r-mcmc
+  - r-mcmcse
+  - r-runjags
+  - r-rjags
+  - jags
