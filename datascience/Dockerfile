@@ -34,13 +34,13 @@ RUN curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | bas
 RUN uv pip install --system jupyter-contrib-nbextensions jupyter-nbextensions-configurator
 
 # Set up working directory
-WORKDIR /workspace
+# WORKDIR /workspace
 
 # Configure shell
-RUN chsh -s /bin/zsh
+# RUN chsh -s /bin/zsh
 
 # Install oh-my-zsh
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+# RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Set default user
 RUN useradd -m vscode && \
@@ -59,4 +59,4 @@ RUN uv pip install --system numpy pandas matplotlib scikit-learn jupyterlab
 
 ENV PATH="/home/vscode/.local/bin:/home/vscode/.cargo/bin:$PATH"
 
-CMD ["zsh"]
+# CMD ["zsh"]
