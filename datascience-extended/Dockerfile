@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     ca-certificates \
     apt-transport-https \
-    zsh \
     sudo \
     sqlite3 \
     libsqlite3-dev \
@@ -47,19 +46,9 @@ RUN uv pip install --system \
     imbalanced-learn category-encoders \
     great-expectations pydantic pandera
 
-# Set up working directory
-WORKDIR /workspace
-
-# Configure shell
-RUN chsh -s /bin/zsh
-
-# Install oh-my-zsh
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
 # Set default user
 RUN useradd -m vscode && \
-    echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-    chown -R vscode:vscode /workspace
+    echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER vscode
 
@@ -75,4 +64,4 @@ RUN uv pip install --system \
 
 ENV PATH="/home/vscode/.local/bin:/home/vscode/.cargo/bin:$PATH"
 
-CMD ["zsh"]
+CMD ["/bin/bash"]

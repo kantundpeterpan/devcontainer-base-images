@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     ca-certificates \
     apt-transport-https \
-    zsh \
     sudo \
     && rm -rf /var/lib/apt/lists/*
 
@@ -33,19 +32,9 @@ RUN curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | bas
 # Install Jupyter extensions
 RUN uv pip install --system jupyter-contrib-nbextensions jupyter-nbextensions-configurator
 
-# Set up working directory
-# WORKDIR /workspace
-
-# Configure shell
-# RUN chsh -s /bin/zsh
-
-# Install oh-my-zsh
-# RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
 # Set default user
 RUN useradd -m vscode && \
-    echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-    chown -R vscode:vscode /workspace
+    echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER vscode
 
@@ -59,4 +48,4 @@ RUN uv pip install --system numpy pandas matplotlib scikit-learn jupyterlab
 
 ENV PATH="/home/vscode/.local/bin:/home/vscode/.cargo/bin:$PATH"
 
-# CMD ["zsh"]
+CMD ["/bin/bash"]

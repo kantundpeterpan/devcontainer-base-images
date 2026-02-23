@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y \
     apt-transport-https \
     rlwrap \
     netcat-openbsd \
-    zsh \
     sudo \
     default-jdk \
     procps \
@@ -99,19 +98,9 @@ RUN uv pip install --system \
 # Install Docker CLI (for docker-in-docker functionality)
 RUN curl -fsSL https://get.docker.com | sh
 
-# Set up working directory
-WORKDIR /workspace
-
-# Configure shell
-RUN chsh -s /bin/zsh
-
-# Install oh-my-zsh
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
 # Set default user
 RUN useradd -m vscode && \
-    echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-    chown -R vscode:vscode /workspace
+    echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER vscode
 
@@ -130,6 +119,6 @@ RUN uv pip install --system \
 ENV PATH="/home/vscode/.local/bin:/home/vscode/.cargo/bin:$PATH"
 
 # Set up Airflow home
-ENV AIRFLOW_HOME=/workspace/airflow
+ENV AIRFLOW_HOME=/home/vscode/airflow
 
-CMD ["zsh"]
+CMD ["/bin/bash"]
