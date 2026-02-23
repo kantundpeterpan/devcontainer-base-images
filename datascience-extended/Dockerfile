@@ -31,7 +31,10 @@ RUN apt-get update && apt-get install -y google-cloud-cli && rm -rf /var/lib/apt
 RUN uv pip install --system \
     numpy pandas matplotlib scikit-learn jupyterlab seaborn plotly \
     polars sqlalchemy psycopg2-binary pymysql \
-    pyarrow fastparquet s3fs gcsfs
+    pyarrow fastparquet s3fs gcsfs rich
+
+# Install act (GitHub Actions runner)
+RUN curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | bash -s -- -b /usr/local/bin
 
 # Install Jupyter extensions
 RUN uv pip install --system \

@@ -54,7 +54,11 @@ RUN uv pip install --system \
     celery \
     requests \
     pydantic \
-    python-dotenv
+    python-dotenv \
+    rich
+
+# Install act (GitHub Actions runner)
+RUN curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | bash -s -- -b /usr/local/bin
 
 # Install additional data engineering tools
 RUN uv pip install --system \

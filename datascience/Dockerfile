@@ -25,7 +25,10 @@ RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dea
 RUN apt-get update && apt-get install -y google-cloud-cli && rm -rf /var/lib/apt/lists/*
 
 # Install Python data science stack with uv
-RUN uv pip install --system numpy pandas matplotlib scikit-learn jupyterlab seaborn plotly
+RUN uv pip install --system numpy pandas matplotlib scikit-learn jupyterlab seaborn plotly rich
+
+# Install act (GitHub Actions runner)
+RUN curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | bash -s -- -b /usr/local/bin
 
 # Install Jupyter extensions
 RUN uv pip install --system jupyter-contrib-nbextensions jupyter-nbextensions-configurator
